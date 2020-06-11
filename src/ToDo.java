@@ -13,14 +13,14 @@ public class ToDo {
     public void addToDoNote(String[] argument) {
         try {
             if (argument.length == 1) {
-                System.out.println("Unable to add: no taks provided");
+                System.out.println("\nUnable to add: no taks provided");
             } else {
                 Path filePath = Paths.get("sourceFiles/toDoNotes.txt");
                 this.toDoNote = argument[1];
                 Files.write(filePath, Collections.singleton(toDoNote + ";f"), StandardOpenOption.APPEND);
             }
         } catch (IOException e) {
-            System.out.println("File not found.");
+            System.out.println("\nFile not found.");
         }
     }
 
@@ -29,8 +29,9 @@ public class ToDo {
             Path filePath = Paths.get("sourceFiles/toDoNotes.txt");
             List<String> lines = Files.readAllLines(filePath);
             if (lines.isEmpty()) {
-                System.out.println("No todos for today");
+                System.out.println("\nNo todos for today");
             } else {
+                System.out.println();
                 for (int i = 0; i < lines.size(); i++) {
                     if (lines.get(i).substring(lines.get(i).length() - 1).equals("f")) {
                         System.out.println((i + 1) + " - [ ] "  + lines.get(i).substring(0, lines.get(i).length() - 2));
@@ -40,7 +41,7 @@ public class ToDo {
                 }
             }
         } catch (IOException e) {
-            System.out.println("File not found.");
+            System.out.println("\nFile not found.");
         }
     }
 
@@ -50,19 +51,19 @@ public class ToDo {
             List<String> lines = Files.readAllLines(filePath);
             boolean isReallyInt = isInteger(argument[1]);
             if (lines.isEmpty()) {
-                System.out.println("Nothing to remove");
+                System.out.println("\nNothing to remove");
             } else if (!isReallyInt) {
-                System.out.println("Unable to remove: index is not a number");
+                System.out.println("\nUnable to remove: index is not a number");
             } else if (lines.size() < Integer.parseInt(argument[1]) || Integer.parseInt(argument[1]) < 0) {
-                System.out.println("Unable to remove: index is out of bound");
+                System.out.println("\nUnable to remove: index is out of bound");
             } else {
                 lines.remove(Integer.parseInt(argument[1])-1);
                 Files.write(filePath, lines);
             }
         } catch (IOException e) {
-            System.out.println("File not found.");
+            System.out.println("\nFile not found.");
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Unable to remove: no index provided");
+            System.out.println("\nUnable to remove: no index provided");
         }
     }
 
@@ -72,11 +73,11 @@ public class ToDo {
             List<String> lines = Files.readAllLines(filePath);
             boolean isReallyInt = isInteger(argument[1]);
             if (lines.isEmpty()) {
-                System.out.println("Nothing to check");
+                System.out.println("\nNothing to check");
             } else if (!isReallyInt) {
-                System.out.println("Unable to check: index is not a number");
+                System.out.println("\nUnable to check: index is not a number");
             } else if (lines.size() < Integer.parseInt(argument[1]) || Integer.parseInt(argument[1]) < 0) {
-                System.out.println("Unable to check: index is out of bound");
+                System.out.println("\nUnable to check: index is out of bound");
             } else {
                 String complete = lines.get(Integer.parseInt(argument[1])-1);
                 complete = complete.substring(0,complete.length()-1)+"t";
@@ -84,9 +85,9 @@ public class ToDo {
                 Files.write(filePath, lines);
             }
         } catch (IOException e) {
-            System.out.println("File not found.");
+            System.out.println("\nFile not found.");
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Unable to check: no index provided");
+            System.out.println("\nUnable to check: no index provided");
         }
     }
 

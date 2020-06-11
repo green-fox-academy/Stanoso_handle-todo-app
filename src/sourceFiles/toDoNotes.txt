@@ -1,2 +1,5 @@
 Feed the monkey;f
 Walk the monkey;f
+Hug the monkey;f
+Pick up laundry;f
+Teach the monkey;f
