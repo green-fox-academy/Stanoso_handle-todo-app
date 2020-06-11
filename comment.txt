@@ -1,0 +1,13 @@
+printArguments - I would put this method inside the ToDo Class, because it is a part of it.
+
+line 17 - else, you are checking just the value 1, what about the value 0? I know it should never happened, but you never know who may do sth with your code. So I would recommend to put else if(length > 1)
+
+the property toDoNote is probably useless, it doesnt really tell us anything about the state of the object and in the methods you can just pass the string directly.
+
+line 52 - no need to store it in another variable, the name of the method "isInteger" is really well chosen, self-explanatory, but I ca understand it, I was doing exactly the same :)
+
+completeTask and RemoveTodo are kinda similar in few ways try to think about how you can avoid the code duplication.
+
+remember the SRP principle? - if you have time for that I would suggest to divided your code into more services, Eg a service/class for handling the I/O etc....there are more ways....
+
+Looks like I have just negative things, but NOPE, I think it is really well done :) Seriously, good job!
